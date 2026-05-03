@@ -1,6 +1,6 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-                <a class="navbar-item" href="https://bulma.io">
+                <a class="navbar-item" href="index.php?view=home">
                         <img src="./img/logo.png" width="50" height="50">
                 </a>
 
