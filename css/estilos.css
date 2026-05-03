@@ -39,15 +39,13 @@ body, html {
         }
 }
 
-/*
-.main-container > .login,
+/* .main-container > .login, */
 .main-container > .hero-body {
         height: auto;
         width: 100%;
         max-width: 400px;
         min-width: 300px;
 }
-*/
 
 .form-inline {
         display: inline-flex;
