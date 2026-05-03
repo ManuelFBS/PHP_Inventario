@@ -8,5 +8,7 @@
         <!-- <body style="background:#fff !important; color:#000 !important;"> -->
         <body>
                 <?php include './inc/navbar.php' ?>
+
+                <?php include './inc/script.php' ?>
         </body>
 </html>
