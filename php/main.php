@@ -2,8 +2,15 @@
 
 // ~ Conexión a la base de datos...
 
+/*
+ * ~ Se utiliza una "carga manual" de las varibles de entorno.
+ * ~ Esto se puede hacer (con fines de aprendizaje) en apps pequeñas
+ * ~ o de poca complejidad.
+ * ~ Para apps más grandes o más complejas, debe utilizarse "Composer"...
+ */
+
 /**
- * * Load key=value pairs from a .env file into $_ENV and getenv().
+ * * Carga pares clave = valor desde un archivo .env en $_ENV y usa getenv().
  */
 function loadEnv(string $path)
 {
