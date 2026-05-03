@@ -2,3 +2,53 @@
         background-color: #3273dc !important;
         color: #ffffff !important;
 }
+
+/** Evita cálculos raros de ancho por padding/border */
+*,
+*::before,
+*::after {
+        box-sizing: border-box;
+}
+
+body, html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+}
+
+.main-container {
+        min-height: 100vh;     /*> Ocupa toda la altura de la ventana */
+        width: 100%;
+        padding: 1rem;     /*> Respira en pantallas pequeñas... */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+/** Regla directa y robusta para el formulario de login... */
+#login-form {
+        width: 100%;
+        max-width: 400px;
+        min-width: 300px;
+}
+
+/** En móviles muy pequeños, evita desbordes por min-width... */
+@media (max-width: 360px) {
+        #login-form {
+                min-width: 100%;
+        }
+}
+
+/*
+.main-container > .login,
+.main-container > .hero-body {
+        height: auto;
+        width: 100%;
+        max-width: 400px;
+        min-width: 300px;
+}
+*/
+
+.form-inline {
+        display: inline-flex;
+}
