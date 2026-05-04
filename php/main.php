@@ -2,7 +2,7 @@
 
 // ~ Conexión a la base de datos...
 
-/*
+/**
  * ~ Se utiliza una "carga manual" de las varibles de entorno.
  * ~ Esto se puede hacer (con fines de aprendizaje) en apps pequeñas
  * ~ o de poca complejidad.
@@ -38,8 +38,8 @@ function loadEnv(string $path)
 
 function connect(): PDO
 {
-        // * Ruta al archivo .env desde este archivo (ajustar si php/ se encuentra en
-        // * otra ubicación relativa a la raíz del proyecto)...
+        // > Ruta al archivo .env desde este archivo (ajustar si php/ se encuentra en
+        // > otra ubicación relativa a la raíz del proyecto)...
         loadEnv(dirname(__DIR__) . DIRECTORY_SEPARATOR . '.env');
 
         $host = $_ENV['DB_HOST'] ?? 'localhost';
@@ -59,6 +59,15 @@ function connect(): PDO
         );
 
         return $pdo;
+}
+
+function verify_data($filter, $string)
+{
+        if (preg_match('/^' . $filter . '$/', $string)) {
+                return false;
+        } else {
+                return true;
+        }
 }
 
 ?>
