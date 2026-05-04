@@ -36,6 +36,14 @@ function loadEnv(string $path)
         }
 }
 
+/**
+ * * La función `connect` establece una conexión con la base de datos PDO
+ * * utilizando parámetros de un archivo .env.
+ *
+ * @return PDO La función `connect()` devuelve una instancia de PDO
+ * (PHP Data Objects), que es una base de datos.
+ * * Objeto de conexión utilizado para interactuar con una base de datos MySQL.
+ */
 function connect(): PDO
 {
         // > Ruta al archivo .env desde este archivo (ajustar si php/ se encuentra en
@@ -61,13 +69,122 @@ function connect(): PDO
         return $pdo;
 }
 
-function verify_data($filter, $string)
+// * Verifica los datos enviados por un formulario...
+function verify_Data(string $filter, string $string)
 {
         if (preg_match('/^' . $filter . '$/', $string)) {
                 return false;
         } else {
                 return true;
         }
+}
+
+// * Limpia una cadena, para evitar posibles "inyecciones de SQL" y
+// * ataques XSS
+function clean_String(string $string)
+{
+        // > Elimina espacios en blanco...
+        $string = trim($string);
+        //
+        // > Elimina slash [barras invertidas ('\')], en caso de
+        // > de existir doble slash ('\\'), elimina una de ellas...
+        $string = stripslashes($string);
+        //
+        // > Devuelve una string de caracteres o un array en el que todas
+        // > las ocurrencias de search en subject (ignorando mayúsculas
+        // > y minúsculas), han sido reemplazadas por el valor de replace...
+        $string = str_ireplace('<script>', '', $string);
+        $string = str_ireplace('</script>', '', $string);
+        $string = str_ireplace('<script src', '', $string);
+        $string = str_ireplace('<script type=', '', $string);
+        $string = str_ireplace('SELECT * FROM', '', $string);
+        $string = str_ireplace('DELETE FROM', '', $string);
+        $string = str_ireplace('INSERT INTO', '', $string);
+        $string = str_ireplace('DROP TABLE', '', $string);
+        $string = str_ireplace('DROP DATABASE', '', $string);
+        $string = str_ireplace('TRUNCATE TABLE', '', $string);
+        $string = str_ireplace('SHOW TABLES;', '', $string);
+        $string = str_ireplace('SHOW DATABASES;', '', $string);
+        $string = str_ireplace('<?php', '', $string);
+        $string = str_ireplace('?>', '', $string);
+        $string = str_ireplace('--', '', $string);
+        $string = str_ireplace('^', '', $string);
+        $string = str_ireplace('<', '', $string);
+        $string = str_ireplace('[', '', $string);
+        $string = str_ireplace(']', '', $string);
+        $string = str_ireplace('==', '', $string);
+        $string = str_ireplace(';', '', $string);
+        $string = str_ireplace('::', '', $string);
+        $string = trim($string);
+        $string = stripslashes($string);
+        return $string;
+}
+
+// * Función para renombrar fotos...
+function rename_Photos(string $name)
+{
+        $name = str_ireplace(' ', '_', $name);
+        $name = str_ireplace('/', '_', $name);
+        $name = str_ireplace('#', '_', $name);
+        $name = str_ireplace('-', '_', $name);
+        $name = str_ireplace('$', '_', $name);
+        $name = str_ireplace('.', '_', $name);
+        $name = str_ireplace(',', '_', $name);
+
+        $name = $name . '_' . rand(0, 100);
+
+        return $name;
+}
+
+// * Función paginador de tablas...
+function table_Paginator(
+        int $page,
+        int $nPage,
+        string $url,
+        int $buttons
+) {
+        $table = '<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">';
+
+        if ($page <= 1) {
+                $table .= '
+                <a class="pagination-previous is-disabled" disabled >Anterior</a>
+                <ul class="pagination-list"';
+        } else {
+                $table .= '
+                <a class="pagination-previous" href="' . $url . ($page - 1) . '" >Anterior</a>
+                <ul class="pagination-list">
+                <li><a class="pagination-link" href="' . $url . '1">1</a></li>
+                <li><span class="pagination-ellipsis">&hellip;</span></li>';
+        }
+
+        $ci = 0;
+        for ($i = 0; $i <= $nPage; $i++) {
+                if ($ci >= $buttons) {
+                        break;
+                }
+                if ($page == $i) {
+                        $table .= '<li><a class="pagination-link is-current" href="' . $url . $i . '">' . $i . '</a></li>';
+                } else {
+                        $table .= '<li><a class="pagination-link" href="' . $url . $i . '">' . $i . '</a></li>';
+                }
+                $ci++;
+        }
+
+        if ($page == $nPage) {
+                $table .= '
+                </ul>
+                <a class="pagination-next is-disabled" disabled >Siguiente</a>';
+        } else {
+                $table .= '
+                <li><span class="pagination-ellipsis">&hellip;</span></li>
+                <li><a class="pagination-link" href="' . $url . $nPage . '">' . $nPage . '</a></li>
+                </ul>
+                <a class="pagination-next" href="' . $url . ($page + 1) . '" >Siguiente</a>';
+        }
+
+        $table .= '</nav>';
+
+        return $table;
 }
 
 ?>
