@@ -79,8 +79,7 @@ function verify_Data(string $filter, string $string)
         }
 }
 
-// * Limpia una cadena, para evitar posibles "inyecciones de SQL" y
-// * ataques XSS
+// * Limpia una cadena, para evitar posibles "inyecciones de SQL" y ataques XSS...
 function clean_String(string $string)
 {
         // > Elimina espacios en blanco...
