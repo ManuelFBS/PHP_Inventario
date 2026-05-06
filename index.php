@@ -18,6 +18,17 @@ require './inc/session_start.php';
                 if (is_file('./views/' . $_GET['view'] . '.php') &&
                                 $_GET['view'] != 'login' &&
                                 $_GET['view'] != '404') {
+                        // > Cerrar sesión. Se bloquea cualquier acceso no loggeado...
+                        if ((
+                                !isset($_SESSION['id']) ||
+                                $_SESSION['id'] == ''
+                        ) ||
+                                (!isset($_SESSION['usuario']) ||
+                                        $_SESSION['usuario'] == '')) {
+                                include './views/logout.php';
+                                exit();
+                        }
+
                         include './inc/navbar.php';
 
                         include './views/' . $_GET['view'] . '.php';
