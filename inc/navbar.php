@@ -45,6 +45,9 @@
 
                 <div class="navbar-end">
                         <div class="navbar-item">
+                                <?php include './views/show_user_name.php'; ?>
+                        </div>
+                        <div class="navbar-item">
                                 <div class="buttons">
                                         <a class="button is-primary is-rounded">
                                                 Mi cuenta
