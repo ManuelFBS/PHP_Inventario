@@ -4,12 +4,16 @@
 </div>
 
 <div class="container pb-6 pt-6">
-        <div class="columns">
                 <?php
                 require_once './php/main.php';
 
+                if (isset($_POST['search_module'])) {
+                        //
+                }
+
                 if (!isset($_SESSION['search_user']) && empty($_SESSION['search_user'])) {
                         ?>
+        <div class="columns">
                 <div class="column">
                         <form action="" method="POST" autocomplete="off" >
                                 <input type="hidden" name="search_module" value="usuario">
@@ -33,7 +37,9 @@
                         <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="off" >
                                 <input type="hidden" name="search_module" value="usuario"> 
                                 <input type="hidden" name="delete_search" value="usuario">
-                                <p>Estas buscando <strong>“Busqueda usuario”</strong></p>
+                                <p>Estas buscando <strong>
+                                        <?php echo $_SESSION['search_user']; ?></strong>
+                                </p>
                                 <br>
                                 <button type="submit" class="button is-danger is-rounded">Eliminar busqueda</button>
                         </form>
@@ -47,9 +53,9 @@
                         }
                         $page = clean_String($page);
 
-                        $url = 'index.php?view=user_list&page=';
+                        $url = 'index.php?view=user_search&page=';
                         $numberOfRecords = 10;
-                        $search = '';
+                        $search = $_SESSION['search_user'];
 
                         require './php/show_user_list.php';
                 }
