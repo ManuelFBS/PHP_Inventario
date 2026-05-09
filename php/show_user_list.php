@@ -8,7 +8,7 @@ if (!isset($page)) {
         $page = 1;
 }
 if (!isset($numberOfRecords)) {
-        $numberOfRecords = 10;
+        $numberOfRecords = 3;
 }
 if (!isset($search)) {
         $search = '';
@@ -148,23 +148,89 @@ if ($total >= 1 && $page <= $nPage) {
         <p class="has-text-right">
         Mostrando usuarios <strong>' . $page_init . '</strong> al <strong>' . $page_end . '</strong> de un <strong>total de ' . $total . '</strong>
         </p>
-';
+        ';
 
-        // * Paginación simple...
+        // // * Paginación simple...
+        // $table .= '<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">';
+
+        // if ($page > 1) {
+        //         $table .= '<a class="pagination-previous" href="' . $url . ($page - 1) . '">Anterior</a>';
+        // } else {
+        //         $table .= '<a class="pagination-previous" disabled>Anterior</a>';
+        // }
+
+        // if ($page < $nPage) {
+        //         $table .= '<a class="pagination-next" href="' . $url . ($page + 1) . '">Siguiente</a>';
+        // } else {
+        //         $table .= '<a class="pagination-next" disabled>Siguiente</a>';
+        // }
+
+        // * $table .= '</nav>';
         $table .= '<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">';
 
+        // * Previo...
         if ($page > 1) {
                 $table .= '<a class="pagination-previous" href="' . $url . ($page - 1) . '">Anterior</a>';
         } else {
                 $table .= '<a class="pagination-previous" disabled>Anterior</a>';
         }
 
+        // * Siguiente...
         if ($page < $nPage) {
                 $table .= '<a class="pagination-next" href="' . $url . ($page + 1) . '">Siguiente</a>';
         } else {
                 $table .= '<a class="pagination-next" disabled>Siguiente</a>';
         }
 
+        // * Botones de página...
+        $table .= '<ul class="pagination-list">';
+
+        // * ¿Cuántos botones de página mostrar alrededor de la página actual?...
+        $maxButtons = 7;  // > Total de botones (approx)...
+        $side = (int) floor($maxButtons / 2);
+
+        $start = $page - $side;
+        $end = $page + $side;
+
+        if ($start < 1) {
+                $end += (1 - $start);
+                $start = 1;
+        }
+        if ($end > $nPage) {
+                $start -= ($end - $nPage);
+                $end = $nPage;
+                if ($start < 1) {
+                        $start = 1;
+                }
+        }
+
+        // * Siempre muestra la página 1 (si no está incluída)...
+        if ($start > 1) {
+                $table .= '<li><a class="pagination-link" href="' . $url . '1">1</a></li>';
+
+                if ($start > 2) {
+                        $table .= '<li><span class="pagination-ellipsis">&hellip;</span></li>';
+                }
+        }
+
+        // * Rango medio...
+        for ($i = $start; $i <= $end; $i++) {
+                if ($i == $page) {
+                        $table .= '<li><a class="pagination-link is-current" aria-current="page" href="' . $url . $i . '">' . $i . '</a></li>';
+                } else {
+                        $table .= '<li><a class="pagination-link" href="' . $url . $i . '">' . $i . '</a></li>';
+                }
+        }
+
+        // Siempre muestra la última página (si no está incluída)...
+        if ($end < $nPage) {
+                if ($end < ($nPage - 1)) {
+                        $table .= '<li><span class="pagination-ellipsis">&hellip;</span></li>';
+                }
+                $table .= '<li><a class="pagination-link" href="' . $url . $nPage . '">' . $nPage . '</a></li>';
+        }
+
+        $table .= '</ul>';
         $table .= '</nav>';
 } else {
         if ($total >= 1) {

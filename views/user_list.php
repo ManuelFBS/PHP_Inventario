@@ -14,7 +14,7 @@
         $page = clean_String($page);
 
         $url = 'index.php?view=user_list&page=';
-        $numberOfRecords = 10;
+        $numberOfRecords = 3;
         $search = '';
 
         require './php/show_user_list.php';
