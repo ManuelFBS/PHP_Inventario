@@ -3,7 +3,7 @@
 // ~ $page, $numberOfRecords, $search, $url
 // ~ And it expects connect() to return a PDO instance (defined in ./php/main.php).
 
-// Defaults: prevent "Undefined variable" if this file is included elsewhere
+// * Defaults: prevent "Undefined variable" if this file is included elsewhere...
 if (!isset($page)) {
         $page = 1;
 }
@@ -150,21 +150,6 @@ if ($total >= 1 && $page <= $nPage) {
         </p>
         ';
 
-        // // * Paginación simple...
-        // $table .= '<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">';
-
-        // if ($page > 1) {
-        //         $table .= '<a class="pagination-previous" href="' . $url . ($page - 1) . '">Anterior</a>';
-        // } else {
-        //         $table .= '<a class="pagination-previous" disabled>Anterior</a>';
-        // }
-
-        // if ($page < $nPage) {
-        //         $table .= '<a class="pagination-next" href="' . $url . ($page + 1) . '">Siguiente</a>';
-        // } else {
-        //         $table .= '<a class="pagination-next" disabled>Siguiente</a>';
-        // }
-
         // * $table .= '</nav>';
         $table .= '<nav class="pagination is-centered is-rounded" role="navigation" aria-label="pagination">';
 
@@ -222,7 +207,7 @@ if ($total >= 1 && $page <= $nPage) {
                 }
         }
 
-        // Siempre muestra la última página (si no está incluída)...
+        // * Siempre muestra la última página (si no está incluída)...
         if ($end < $nPage) {
                 if ($end < ($nPage - 1)) {
                         $table .= '<li><span class="pagination-ellipsis">&hellip;</span></li>';
