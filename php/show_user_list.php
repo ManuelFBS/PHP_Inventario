@@ -8,7 +8,7 @@ if (!isset($page)) {
         $page = 1;
 }
 if (!isset($numberOfRecords)) {
-        $numberOfRecords = 3;
+        $numberOfRecords = 10;
 }
 if (!isset($search)) {
         $search = '';
