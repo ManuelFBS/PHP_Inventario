@@ -8,7 +8,7 @@
                 require_once './php/main.php';
 
                 if (isset($_POST['search_module'])) {
-                        //
+                        require_once './php/seeker.php';
                 }
 
                 if (!isset($_SESSION['search_user']) && empty($_SESSION['search_user'])) {
@@ -16,7 +16,7 @@
         <div class="columns">
                 <div class="column">
                         <form action="" method="POST" autocomplete="off" >
-                                <input type="hidden" name="search_module" value="usuario">
+                                <input type="hidden" name="search_module" value="user">
                                 <div class="field is-grouped">
                                         <p class="control is-expanded">
                                                 <input class="input is-rounded" type="text" 
@@ -35,8 +35,8 @@
         <div class="columns">
                 <div class="column">
                         <form class="has-text-centered mt-6 mb-6" action="" method="POST" autocomplete="off" >
-                                <input type="hidden" name="search_module" value="usuario"> 
-                                <input type="hidden" name="delete_search" value="usuario">
+                                <input type="hidden" name="search_module" value="user"> 
+                                <input type="hidden" name="delete_search" value="user">
                                 <p>Estas buscando <strong>
                                         <?php echo $_SESSION['search_user']; ?></strong>
                                 </p>
