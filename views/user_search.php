@@ -4,15 +4,15 @@
 </div>
 
 <div class="container pb-6 pt-6">
-                <?php
-                require_once './php/main.php';
+        <?php
+        require_once './php/main.php';
 
-                if (isset($_POST['search_module'])) {
-                        require_once './php/seeker.php';
-                }
+        if (isset($_POST['search_module'])) {
+                require_once './php/seeker.php';
+        }
 
-                if (!isset($_SESSION['search_user']) && empty($_SESSION['search_user'])) {
-                        ?>
+        if (!isset($_SESSION['search_user']) && empty($_SESSION['search_user'])) {
+                ?>
         <div class="columns">
                 <div class="column">
                         <form action="" method="POST" autocomplete="off" >
@@ -47,17 +47,22 @@
         </div>
 
         <?php
-                        $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-                        if ($page <= 0) {
-                                $page = 1;
-                        }
-                        $page = clean_String($page);
-
-                        $url = 'index.php?view=user_search&page=';
-                        $numberOfRecords = 10;
-                        $search = $_SESSION['search_user'];
-
-                        require './php/show_user_list.php';
+                // * Eliminar usuario...
+                if (isset($_GET['user_id_del'])) {
+                        require_once './php/user_delete.php';
                 }
-                ?>
+
+                $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+                if ($page <= 0) {
+                        $page = 1;
+                }
+                $page = clean_String($page);
+
+                $url = 'index.php?view=user_search&page=';
+                $numberOfRecords = 10;
+                $search = $_SESSION['search_user'];
+
+                require './php/show_user_list.php';
+        }
+        ?>
 </div>

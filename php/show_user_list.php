@@ -129,8 +129,12 @@ if ($total >= 1 && $page <= $nPage) {
                                 </a>
                         </td>
                         <td class="has-text-centered">
-                                <a href="index.php?view=user_update&user_id_del=' . (int) $r['usuario_id'] . '" class="button is-danger is-rounded is-small">
-                                Eliminar
+                                <a
+                                        href="index.php?view=user_list&user_id_del=' . (int) $r['usuario_id'] . '&page=' . (int) $page . '"
+                                        class="button is-danger is-rounded is-small"
+                                        onclick="return confirm(\"Are you sure you want to delete this user?\");"
+                                >
+                                        Eliminar
                                 </a>
                         </td>
                 </tr>

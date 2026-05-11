@@ -7,6 +7,11 @@
         <?php
         require_once './php/main.php';
 
+        // * Eliminar usuario...
+        if (isset($_GET['user_id_del'])) {
+                require_once './php/user_delete.php';
+        }
+
         $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
         if ($page <= 0) {
                 $page = 1;
