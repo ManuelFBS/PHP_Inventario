@@ -17,17 +17,9 @@ $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
 </div>
 
 <div class="container pb-6 pt-6">
-        <p class="has-text-right pt-4 pb-4">
-		<a href="#" class="button is-link is-rounded btn-back"><- Regresar atrás</a>
-	</p>
-	<script type="text/javascript">
-                let btn_back = document.querySelector(".btn-back");
-
-                btn_back.addEventListener('click', function(e){
-                        e.preventDefault();
-                        window.history.back();
-                });
-	</script>
+        <?php
+        include './php/btn_back.php';
+        ?>
 
         <div class="form-rest mb-6 mt-6"></div>
 
@@ -158,8 +150,4 @@ $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
 		</p>
         </form>
 
-        <div class="notification is-danger is-light mb-6 mt-6">
-	        <strong>¡Ocurrio un error inesperado!</strong><br>
-	        No podemos obtener la información solicitada...!
-	</div>
 </div>
