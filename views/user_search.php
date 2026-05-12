@@ -48,14 +48,17 @@
 
         <?php
                 // * Eliminar usuario...
-                if (isset($_GET['user_id_del'])) {
-                        require_once './php/user_delete.php';
-                }
+                $page = 1;
 
-                $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+                if (isset($_POST['page'])) {
+                        $page = (int) $_POST['page'];
+                } elseif (isset($_GET['page'])) {
+                        $page = (int) $_GET['page'];
+                }
                 if ($page <= 0) {
                         $page = 1;
                 }
+
                 $page = clean_String($page);
 
                 $url = 'index.php?view=user_search&page=';

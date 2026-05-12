@@ -131,14 +131,23 @@ if ($total >= 1 && $page <= $nPage) {
                                         Actualizar
                                 </a>
                         </td>
+                        
                         <td class="has-text-centered">
-                                <a
-                                        href="index.php?view=user_list&user_id_del=' . (int) $r['usuario_id'] . '&page=' . (int) $page . '"
-                                        class="button is-danger is-rounded is-small"
-                                        onclick="return confirm(\"Are you sure you want to delete this user?\");"
+                                <!-- Delete user via POST (más seguro que GET) -->
+                                <form
+                                        action="" 
+                                        method="POST" 
+                                        class="is-inline" 
+                                        onsubmit=\'return confirm("¿Seguro que deseas eliminar este usuario?");\'
                                 >
-                                        Eliminar
-                                </a>
+                                        <!-- The ID of the user to delete -->
+                                         <input type="hidden" name="user_id_del" value="' . (int) $r['usuario_id'] . '">
+                                        <input type="hidden" name="page" value="' . (int) $page . '">
+
+                                        <button type="submit" class="button is-danger is-rounded is-small">
+                                                Eliminar
+                                        </button>
+                                </form>
                         </td>
                 </tr>
                 ';

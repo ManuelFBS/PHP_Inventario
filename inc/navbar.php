@@ -49,7 +49,10 @@
                         </div>
                         <div class="navbar-item">
                                 <div class="buttons">
-                                        <a class="button is-primary is-rounded">
+                                        <a 
+                                                href="index.php?view=user_update&user_id_up=<?php echo $_SESSION['id']; ?>" 
+                                                class="button is-primary is-rounded"
+                                        >
                                                 Mi cuenta
                                         </a>
                                         <a href="index.php?view=logout"  class="button is-link is-rounded">
