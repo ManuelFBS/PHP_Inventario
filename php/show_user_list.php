@@ -124,8 +124,11 @@ if ($total >= 1 && $page <= $nPage) {
                         <td class="has-text-left">' . htmlspecialchars($r['usuario_usuario']) . '</td>
                         <td class="has-text-left">' . htmlspecialchars($r['usuario_email']) . '</td>
                         <td class="has-text-centered">
-                                <a href="index.php?view=user_update&user_id_up=' . (int) $r['usuario_id'] . '" class="button is-success is-rounded is-small">
-                                Actualizar
+                                <a 
+                                        href="index.php?view=user_update&user_id_up=' . (int) $r['usuario_id'] . '" 
+                                        class="button is-success is-rounded is-small"
+                                >
+                                        Actualizar
                                 </a>
                         </td>
                         <td class="has-text-centered">
