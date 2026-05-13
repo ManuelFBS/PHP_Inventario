@@ -2,7 +2,12 @@
 
 require_once './php/main.php';
 
-$id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
+/*
+ * El ID de usuario (user_id_up) se obtiene de la URL como una cadena de texto (por ejemplo, "14").
+ * Lo convertimos a entero para la lógica de la base de datos: un texto no válido se convierte en 0,
+ * lo cual es correcto para "ningún usuario"...
+ */
+$id = isset($_GET['user_id_up']) ? (int) $_GET['user_id_up'] : 0;
 
 ?>
 
@@ -19,12 +24,29 @@ $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
 <div class="container pb-6 pt-6">
         <?php
         include './php/btn_back.php';
-        ?>
+
+        $db = connect();
+        $check_user = $db->prepare('SELECT * FROM usuario WHERE usuario_id = ?');
+        $check_user->execute([$id]);
+
+        if ($check_user->rowCount() > 0) {
+                $data = $check_user->fetch();
+                ?>
 
         <div class="form-rest mb-6 mt-6"></div>
 
-        <form action="" method="POST" class="FormularioAjax" autocomplete="off" >
-                <input type="hidden" name="usuario_id" required >
+        <form 
+                action="" 
+                method="POST" 
+                class="FormularioAjax" 
+                autocomplete="off" 
+        >
+                <input 
+                        type="hidden" 
+                        value="<?php echo $data['usuario_id'] ?>" 
+                        name="usuario_id" 
+                        required 
+                >
 		
 		<div class="columns">
                         <div class="column">
@@ -34,6 +56,7 @@ $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
                                                 class="input" 
                                                 type="text" 
                                                 name="usuario_nombre" 
+                                                value="<?php echo $data['usuario_nombre'] ?>" 
                                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" 
                                                 maxlength="40" required 
                                         >
@@ -47,6 +70,7 @@ $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
                                                 type="text" 
                                                 name="usuario_apellido" 
                                                 pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" 
+                                                value="<?php echo $data['usuario_apellido'] ?>" 
                                                 maxlength="40" required 
                                         >
                                 </div>
@@ -62,6 +86,7 @@ $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
                                                 type="text" 
                                                 name="usuario_usuario" 
                                                 pattern="[a-zA-Z0-9]{4,20}" 
+                                                value="<?php echo $data['usuario_usuario'] ?>" 
                                                 maxlength="20" 
                                                 required 
                                         >
@@ -74,6 +99,7 @@ $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
                                                 class="input" 
                                                 type="email" 
                                                 name="usuario_email" 
+                                                value="<?php echo $data['usuario_email'] ?>" 
                                                 maxlength="70" 
                                         >
                                 </div>
@@ -149,5 +175,12 @@ $id = (isset($_GET['user_id_up'])) ? $_GET['user_id_up'] : 0;
 			<button type="submit" class="button is-success is-rounded">Actualizar</button>
 		</p>
         </form>
+
+        <?php
+        } else {
+                include './inc/error_alert.php';
+                $db = null;
+        }
+        ?>
 
 </div>
