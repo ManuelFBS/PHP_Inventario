@@ -36,9 +36,9 @@ $id = isset($_GET['user_id_up']) ? (int) $_GET['user_id_up'] : 0;
         <div class="form-rest mb-6 mt-6"></div>
 
         <form 
-                action="" 
+                action="./php/user_update_save.php" 
                 method="POST" 
-                class="FormularioAjax" 
+                class="FormAjax" 
                 autocomplete="off" 
         >
                 <input 
@@ -150,7 +150,7 @@ $id = isset($_GET['user_id_up']) ? (int) $_GET['user_id_up'] : 0;
                                         <input 
                                                 class="input" 
                                                 type="text" 
-                                                name="administrador_usuario" 
+                                                name="administrator_user" 
                                                 pattern="[a-zA-Z0-9]{4,20}" 
                                                 maxlength="20" required 
                                         >
@@ -162,7 +162,7 @@ $id = isset($_GET['user_id_up']) ? (int) $_GET['user_id_up'] : 0;
                                         <input 
                                                 class="input" 
                                                 type="password" 
-                                                name="administrador_clave" 
+                                                name="administrator_key" 
                                                 pattern="[a-zA-Z0-9$@.-]{7,100}" 
                                                 maxlength="100" 
                                                 required 
