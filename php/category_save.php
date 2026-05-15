@@ -59,7 +59,7 @@ try {
         if ($ok) {
                 echo '
                         <div class="notification is-success is-light">
-                                <strong>Categoría guardada!</strong><br>
+                                <strong>CATEGORIA GUARDADA!</strong><br>
                                 El registro se almacenó correctamente.
                         </div>
                 ';
