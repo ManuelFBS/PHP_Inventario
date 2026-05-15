@@ -50,3 +50,9 @@ body, html {
 .form-inline {
         display: inline-flex;
 }
+
+.tittle-of-label{
+        font-family: Tahoma;
+        font-size: 16;
+        font-style: italic;
+}
