@@ -1,7 +1,7 @@
 <div class="container is-fluid mb-6">
         <h1 class="title">Categorías</h1>
         <h2 class="subtitle">Lista de categorías</h2>
-</motion.div>
+</div>
 
 <div class="container pb-6 pt-6">
         <?php
@@ -30,4 +30,4 @@
 
         require './php/show_category_list.php';
         ?>
-</motion.div>
+</div>

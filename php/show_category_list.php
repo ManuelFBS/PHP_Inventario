@@ -111,7 +111,7 @@ if ($total >= 1 && $page <= $nPage) {
                 $categoryId = (int) $r['categoria_id'];
                 $totalProducts = (int) $r['total_productos'];
 
-                // Enlace "Ver productos" (ajusta la vista cuando exista product_list)
+                // > Enlace "Ver productos" (ajusta la vista cuando exista product_list)
                 $productsLink = 'index.php?view=product_list&category_id=' . $categoryId;
 
                 $table .= '
@@ -150,7 +150,7 @@ if ($total >= 1 && $page <= $nPage) {
         $table .= '
                 </tbody>
         </table>
-</motion.div>
+</div>
 
 <p class="has-text-right">
         Mostrando categorías <strong>' . $page_init . '</strong> al <strong>' . $page_end . '</strong>
@@ -235,7 +235,7 @@ if ($total >= 1 && $page <= $nPage) {
                         </tr>
                 </tbody>
         </table>
-</motion.div>';
+</div>';
         }
 }
 
