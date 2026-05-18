@@ -1,6 +1,12 @@
 <?php
 require './inc/session_start.php';
-// echo 'ID de sesión: ' . session_id();  // Para depurar
+
+if (isset($_POST['search_module'])) {
+        require_once './php/main.php';
+        require_once './php/seeker.php';
+        // > seeker.php hace header() + exit(); no llegará al HTML de abajo...
+}
+
 ?>
 
 <!DOCTYPE html>

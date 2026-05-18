@@ -7,9 +7,9 @@
         <?php
         require_once './php/main.php';
 
-        if (isset($_POST['search_module'])) {
-                require_once './php/seeker.php';
-        }
+        // ! if (isset($_POST['search_module'])) {
+        // !         require_once './php/seeker.php';
+        // ! }
 
         if (!isset($_SESSION['search_user']) && empty($_SESSION['search_user'])) {
                 ?>

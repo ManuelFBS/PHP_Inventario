@@ -7,9 +7,9 @@
         <?php
         require_once './php/main.php';
 
-        if (isset($_POST['search_module'])) {
-                require_once './php/seeker.php';
-        }
+        // ! if (isset($_POST['search_module'])) {
+        // !        require_once './php/seeker.php';
+        // ! }
 
         if (!isset($_SESSION['search_category'])) {
                 ?>
@@ -71,7 +71,7 @@
 
                 $url = 'index.php?view=category_search&page=';
                 $numberOfRecords = 10;
-                $search = $_SESSION['category_search'];  // > Mismo $search que usa show_category_list.php...
+                $search = $_SESSION['search_category'];  // > Mismo $search que usa show_category_list.php...
 
                 require './php/show_category_list.php';
         }
