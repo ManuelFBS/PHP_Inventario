@@ -35,10 +35,10 @@
                         <div class="navbar-item has-dropdown is-hoverable">
                                 <a class="navbar-link">Productos</a>
                                 <div class="navbar-dropdown">
-                                        <a class="navbar-item">Nuevo</a>
-                                        <a class="navbar-item">Lista</a>
+                                        <a class="navbar-item" href="index.php?view=product_new">Nuevo</a>
+                                        <a class="navbar-item" href="index.php?view=product_list">Lista</a>
                                         <a class="navbar-item">Por categoría</a>
-                                        <a class="navbar-item">Buscar</a>
+                                        <a class="navbar-item" href="index.php?view=product_search">Buscar</a>
                                 </div>
                         </div>
                 </div>
