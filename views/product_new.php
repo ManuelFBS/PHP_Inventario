@@ -10,13 +10,13 @@
                 <div class="columns">
 		  	<div class="column">
                                 <div class="control">
-                                        <label>Código</label>
+                                        <label class="tittle-of-label">Código</label>
                                         <input class="input" type="text" name="producto_codigo" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
                                 </div>
                         </div>
 		  	<div class="column">
 		    	        <div class="control">
-					<label>Nombre</label>
+					<label class="tittle-of-label">Nombre</label>
 				  	<input class="input" type="text" name="producto_nombre" pattern="[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}" maxlength="40" required >
 				</div>
 		  	</div>
