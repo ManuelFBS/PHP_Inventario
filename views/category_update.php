@@ -19,6 +19,14 @@ $id = isset($_GET['category_id_up']) ? (int) $_GET['category_id_up'] : 0;
 
 <div class="container pb-6 pt-6">
         <?php
+        // * Volver al listado con recarga real (no caché del historial)...
+        $return_page = isset($_GET['from_page']) ? (int) $_GET['from_page'] : 1;
+        if ($return_page <= 0) {
+                $return_page = 1;
+        }
+        $btn_back_url = 'index.php?view=category_list&page=' . $return_page;
+        $btn_back_label = 'Regresar al listado de categorías';
+
         include './php/btn_back.php';
 
         $db = connect();
