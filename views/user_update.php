@@ -23,6 +23,19 @@ $id = isset($_GET['user_id_up']) ? (int) $_GET['user_id_up'] : 0;
 
 <div class="container pb-6 pt-6">
         <?php
+        if ($id == $_SESSION['id']) {
+                // * Llegaste desde "Mi cuenta" en el menú
+                $btn_back_url = 'index.php?view=home';
+                $btn_back_label = 'Regresar al inicio';
+        } else {
+                $return_page = isset($_GET['from_page']) ? (int) $_GET['from_page'] : 1;
+                if ($return_page <= 0) {
+                        $return_page = 1;
+                }
+                $btn_back_url = 'index.php?view=user_list&page=' . $return_page;
+                $btn_back_label = 'Regresar al listado de usuarios';
+        }
+
         include './php/btn_back.php';
 
         $db = connect();
