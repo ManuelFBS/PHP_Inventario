@@ -1,6 +1,6 @@
 <?php
 
-$category_id_del = isset($POST['category_id_del']) ? (int) $_POST['category_id_del'] : 0;
+$category_id_del = isset($_POST['category_id_del']) ? (int) $_POST['category_id_del'] : 0;
 
 if ($category_id_del <= 0) {
         echo '

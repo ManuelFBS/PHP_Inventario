@@ -44,7 +44,7 @@ $id = isset($_GET['category_id_up']) ? (int) $_GET['category_id_up'] : 0;
                         required 
                 >
 		
-		<div class="columns">
+		<!-- <div class="columns">
                         <div class="column">
                                 <div class="control">
                                         <label>Nombre</label>
@@ -70,12 +70,12 @@ $id = isset($_GET['category_id_up']) ? (int) $_GET['category_id_up'] : 0;
                                         >
                                 </div>
                         </div>
-                </div>
+                </div> -->
 
                 <div class="columns">
                         <div class="column">
                                 <div class="control">
-                                        <label>Nombre</label>
+                                        <label class="tittle-of-label"><strong>Nombre</strong></label>
                                         <input 
                                                 class="input" 
                                                 type="text" 
@@ -89,7 +89,7 @@ $id = isset($_GET['category_id_up']) ? (int) $_GET['category_id_up'] : 0;
                         </div>
                         <div class="column">
                                 <div class="control">
-                                        <label>Ubicación</label>
+                                        <label class="tittle-of-label"><strong>Ubicación</strong></label>
                                         <input 
                                                 class="input" 
                                                 type="text" 
