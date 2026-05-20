@@ -43,34 +43,6 @@ $id = isset($_GET['category_id_up']) ? (int) $_GET['category_id_up'] : 0;
                         name="categoria_id" 
                         required 
                 >
-		
-		<!-- <div class="columns">
-                        <div class="column">
-                                <div class="control">
-                                        <label>Nombre</label>
-                                        <input 
-                                                class="input" 
-                                                type="text" 
-                                                name="categoria_nombre" 
-                                                pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{4,50}" 
-                                                maxlength="50" 
-                                                required 
-                                        >
-                                </div>
-                        </div>
-                        <div class="column">
-                                <div class="control">
-                                        <label class="tittle-of-label"><strong>Ubicación</strong></label>
-                                        <input 
-                                                class="input" 
-                                                type="text" 
-                                                name="categoria_ubicacion" 
-                                                pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{5,150}" 
-                                                maxlength="150" 
-                                        >
-                                </div>
-                        </div>
-                </div> -->
 
                 <div class="columns">
                         <div class="column">
